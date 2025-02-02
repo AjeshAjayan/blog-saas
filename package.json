@@ -12,9 +12,14 @@
     "push": "drizzle-kit push"
   },
   "dependencies": {
+    "@apollo/client": "^3.12.8",
     "@neondatabase/serverless": "^0.10.4",
+    "apollo-server-micro": "^3.13.0",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.39.1",
+    "graphql": "^16.10.0",
+    "jsonwebtoken": "^9.0.2",
     "next": "15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -22,6 +27,8 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.8",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
