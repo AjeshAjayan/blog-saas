@@ -2,68 +2,47 @@ import { getUserByEmail } from "@/graphql/services/users.service";
 import { generateResponseFormat } from "@/utils/generateResponseFormat";
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+import { cookies } from "next/headers";
+import { ApolloError } from "@apollo/client";
 
-export async function loginController(request: Request) {
+export async function loginController(email: string, password: string) {
 
     try {
-        const {
-            email,
-            password,
-        } = await request.json();
+        console.log('email', email, password);
+        if (!email || !password) {
+            return new Error('Email and password are required');
+        }
 
         const user = await getUserByEmail(email);
-        console.log('user', user);
         if (!user) {
-            return Response.json(
-                generateResponseFormat(
-                    'User not found',
-                    404,
-                    'not-found',
-                    null,
-                ),
-                { status: 404 },
-            );
+            return new Error('User not found');
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
 
         if (!isMatch) {
-            return Response.json(generateResponseFormat(
-                'Invalid credentials',
-                403,
-                'forbidden',
-                null,
-            ), { status: 403 });
+            return new Error('Invalid credentials');
         } else {
             const token = jwt.sign({ user }, process.env.JWT_SECRET!, {
                 expiresIn: '3h'
             });
 
-            Response.json(
-                generateResponseFormat(
-                    'Logged in successfully',
-                    200,
-                    'success',
-                    {},
-                ),
-                {
-                    status: 200,
-                    headers: {
-                        'Set-Cookie': `token=${token}; HttpOnly; Secure; SameSite=Strict; Path=/`,
-                    },
-                }
-            );
+            const cookieStore = await cookies();
+
+            cookieStore.set('token', token, {
+                httpOnly: true, 
+                secure: process.env.NODE_ENV === 'production',
+                maxAge: 60 * 60 * 24 * 7,
+                path: '/',
+            });
+
+            return {
+                message: 'User logged in successfully'
+            };
         }
 
     } catch (err) {
         console.error('Error while calling loginController', err);
-        Response.json(
-            generateResponseFormat(
-                'Something went wrong',
-                500,
-                'error',
-                null,
-            )
-        );
+        throw new Error('Something went wrong');
     }
 }

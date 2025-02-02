@@ -1,8 +1,16 @@
 import { createUser } from '@/graphql/services/users.service';
+import { GraphQLError } from 'graphql';
 import { cookies } from 'next/headers'
 
 export async function signUpController(fullName: string, email: string, password: string) {
     try {
+
+        // validate inputs
+        if (!fullName || !email || !password) {
+            return new GraphQLError('Name, email, and password are required', {
+                extensions: { code: 'BAD_USER_INPUT' },
+            });
+        }
         
         const cookieStore = await cookies();
         const token = cookieStore.get('token');
@@ -17,10 +25,13 @@ export async function signUpController(fullName: string, email: string, password
             message: 'User created successfully',
         };
     } catch(e) {
-        console.error(e);
         if(((e as any).code) === '23505') {
-            throw new Error('User already exists');
+            return new GraphQLError('Email already exists', {
+                extensions: { code: 'BAD_USER_INPUT' },
+            });
         }
-        throw new Error('Error while creating user');
+        return new GraphQLError('Something went wrong', {
+            extensions: { code: 'INTERNAL_SERVER_ERROR' },
+        });
     }
 }
