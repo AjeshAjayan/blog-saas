@@ -1,14 +1,9 @@
+import { signUpController } from "@/controllers/signup.controller";
 
 export const userResolvers = {
-    Query: {
-        users: () => [
-            { id: "1", name: "John Doe", email: "john@example.com" },
-            { id: "2", name: "Jane Doe", email: "jane@example.com" },
-        ],
-    },
     Mutation: {
-        addUser: (_ : any, { name, email }: any) => {
-            return { id: Date.now().toString(), name, email };
+        addUser: (_ : any, { name, email, password }: any) => {
+            return signUpController(name, email, password);
         },
     },
 };

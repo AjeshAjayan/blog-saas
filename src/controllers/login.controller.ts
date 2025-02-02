@@ -3,7 +3,7 @@ import { generateResponseFormat } from "@/utils/generateResponseFormat";
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 
-export async function POST(request: Request) {
+export async function loginController(request: Request) {
 
     try {
         const {

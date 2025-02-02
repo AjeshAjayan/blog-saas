@@ -5,6 +5,11 @@ export const userTypeDefs = gql`
         id: ID!
         name: String!
         email: String!
+        password: String
+    }
+
+    type AddUserResponse {
+        message: String!
     }
 
     type Query {
@@ -12,7 +17,7 @@ export const userTypeDefs = gql`
     }
 
     type Mutation {
-        addUser(name: String!, email: String!): User
+        addUser(name: String!, email: String!, password: String): AddUserResponse
         getUserByEmail(email: String!): User
     }
 `;
