@@ -1,14 +1,21 @@
 "use client";
 import { BButton } from "@/components/BButton";
 import { BInput } from "@/components/BInput";
+import createApolloClient from "@/lib/apolloClient";
+import { useMutation } from "@apollo/client";
 import { Metadata } from "next";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import { LOGIN_GRAPHQL } from "./queries/login.graphql";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 type FormType = {
 	email: string;
 	password: string;
 }
+
+const client = createApolloClient();
 
 export default function Login() {
 
@@ -23,8 +30,23 @@ export default function Login() {
 		}
 	});
 
+	const router = useRouter();
+
+	const [login, { loading }] = useMutation(LOGIN_GRAPHQL, { client });
+
 	const handleOnSubmit = handleSubmit((data) => {
 		console.log(data);
+		login({
+			variables: {
+				email: data.email,
+				password: data.password
+			}
+		}).then((response) => {
+			toast(response.data.login.message, { type: "success" });
+			router.push("/");
+		}).catch((error) => {
+			toast.error(error.message, { type: "error" });
+		})
 	})
 
 	return (
@@ -38,7 +60,7 @@ export default function Login() {
 			xs:bg-[position:-45px_-180px]
 		">
 			<main className="xs:z-10 xs:w-full ">
-				<form 
+				<form
 					className="
 						xs:w-full 
 						xs:h-3/4 
@@ -68,7 +90,7 @@ export default function Login() {
 						errors={errors.password}
 						{...register("password", { required: "Password is required" })}
 					/>
-					<BButton type="submit">Login</BButton>
+					<BButton disabled={loading} type="submit">{ loading ? 'Loading...' : 'Login'}</BButton>
 					<p>Not a user? <Link href="/signup">Sign up</Link></p>
 				</form>
 			</main>

@@ -1,4 +1,5 @@
 "use client";
+
 import { BButton } from "@/components/BButton";
 import { BInput } from "@/components/BInput";
 import createApolloClient from "@/lib/apolloClient";
@@ -7,8 +8,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { ADD_USER_GRAPHQL } from "./queries/addUser.graphql";
 import { toast } from "react-toastify";
-import { redirect } from "next/navigation";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 type FormType = {
 	fullname: string;
