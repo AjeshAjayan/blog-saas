@@ -1,4 +1,4 @@
-import { getUserByEmail } from "@/services/users.service";
+import { getUserByEmail } from "@/graphql/services/users.service";
 import { generateResponseFormat } from "@/utils/generateResponseFormat";
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';

@@ -1,4 +1,4 @@
-import { createUser } from '@/services/users.service';
+import { createUser } from '@/graphql/services/users.service';
 import { cookies } from 'next/headers'
 
 export async function signUpController(fullName: string, email: string, password: string) {
