@@ -5,7 +5,13 @@ export const authTypeDefs = gql`
         message: String!
     }
 
+    type StatusResponse {
+        auth: Boolean!
+        user: User
+    }
+
     type Mutation {
         login(email: String!, password: String!): LoginResponse
+        getStatus: StatusResponse
     }
 `;

@@ -6,7 +6,6 @@ import { cookies } from "next/headers";
 export async function loginController(email: string, password: string) {
 
     try {
-        console.log('email', email, password);
         if (!email || !password) {
             return new Error('Email and password are required');
         }

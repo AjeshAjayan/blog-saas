@@ -35,7 +35,6 @@ export default function Login() {
 	const [login, { loading }] = useMutation(LOGIN_GRAPHQL, { client });
 
 	const handleOnSubmit = handleSubmit((data) => {
-		console.log(data);
 		login({
 			variables: {
 				email: data.email,

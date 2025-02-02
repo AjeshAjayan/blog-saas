@@ -1,8 +1,13 @@
 import { resolvers, typeDefs } from '@/graphql/graphql';
+import { verifyToken } from '@/utils/verifyToken';
 import { ApolloServer } from '@apollo/server';
 import { startServerAndCreateNextHandler } from "@as-integrations/next";
 
-const apolloServer = new ApolloServer({ typeDefs, resolvers });
+const apolloServer = new ApolloServer({ 
+    typeDefs, 
+    resolvers,
+    
+});
 
 export const config = {
     api: {
@@ -10,7 +15,11 @@ export const config = {
     }
 }
 
-const handler = startServerAndCreateNextHandler(apolloServer as any);
+const handler = startServerAndCreateNextHandler(apolloServer as any, {
+    context: async () => {
+        return await verifyToken();
+    },
+});
 
 export async function GET(req: Request) {
     return handler(req);

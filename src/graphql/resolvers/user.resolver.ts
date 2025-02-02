@@ -1,4 +1,4 @@
-import { signUpController } from "@/graphql/controllers/signup.controller";
+import { signUpController } from "@/graphql/controllers/auth/signup.controller";
 
 export const userResolvers = {
     Mutation: {

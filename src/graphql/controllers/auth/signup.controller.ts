@@ -1,6 +1,5 @@
 import { createUser } from '@/graphql/services/users.service';
 import { GraphQLError } from 'graphql';
-import { cookies } from 'next/headers'
 
 export async function signUpController(fullName: string, email: string, password: string) {
     try {
@@ -11,9 +10,6 @@ export async function signUpController(fullName: string, email: string, password
                 extensions: { code: 'BAD_USER_INPUT' },
             });
         }
-        
-        const cookieStore = await cookies();
-        const token = cookieStore.get('token');
     
         await createUser({
             name: fullName,
