@@ -18,9 +18,7 @@ export default function RootLayout({
       <body
         className={`${nunito.variable} ${nunito.className} antialiased`}
       >
-        <ApolloProvider client={client}>
-          {children}
-        </ApolloProvider>
+        {children}
       </body>
     </html>
   );

@@ -1,9 +1,7 @@
 import { getUserByEmail } from "@/graphql/services/users.service";
-import { generateResponseFormat } from "@/utils/generateResponseFormat";
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import { cookies } from "next/headers";
-import { ApolloError } from "@apollo/client";
 
 export async function loginController(email: string, password: string) {
 
@@ -43,6 +41,6 @@ export async function loginController(email: string, password: string) {
 
     } catch (err) {
         console.error('Error while calling loginController', err);
-        throw new Error('Something went wrong');
+        return new Error('Something went wrong');
     }
 }
