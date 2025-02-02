@@ -1,5 +1,7 @@
+import client from "@/lib/apolloClient";
 import "./globals.css";
 import { Nunito_Sans } from 'next/font/google';
+import { ApolloProvider } from "@apollo/client";
 
 const nunito = Nunito_Sans({
   variable: "--font-nunito-sans",
@@ -16,7 +18,9 @@ export default function RootLayout({
       <body
         className={`${nunito.variable} ${nunito.className} antialiased`}
       >
-        {children}
+        <ApolloProvider client={client}>
+          {children}
+        </ApolloProvider>
       </body>
     </html>
   );
