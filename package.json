@@ -7,10 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "migration": "drizzle-kit generate"
+    "migration": "drizzle-kit generate",
+    "migrate": "drizzle-kit migrate",
+    "push": "drizzle-kit push"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.4",
+    "dotenv": "^16.4.7",
     "drizzle-orm": "^0.39.1",
     "next": "15.1.6",
     "react": "^19.0.0",
