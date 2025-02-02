@@ -12,5 +12,5 @@ export const blogContentTable = pgTable('blogs_table', {
     updatedAt: timestamp('updated_at').notNull().$onUpdate(() => new Date()),
 });
 
-export type InsertBlogContent = typeof blogTable.$inferInsert;
-export type SelectBlogContent = typeof blogTable.$inferSelect;
+export type InsertBlogContent = typeof blogContentTable.$inferInsert;
+export type SelectBlogContent = typeof blogContentTable.$inferSelect;
