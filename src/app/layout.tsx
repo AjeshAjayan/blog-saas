@@ -1,12 +1,18 @@
-import client from "@/lib/apolloClient";
+import { Metadata } from "next";
 import "./globals.css";
 import { Nunito_Sans } from 'next/font/google';
-import { ApolloProvider } from "@apollo/client";
+import { ToastContainer } from "react-toastify";
 
 const nunito = Nunito_Sans({
   variable: "--font-nunito-sans",
   subsets: ["latin"],
 });
+
+
+export const metadata: Metadata = {
+	title: "Welcome..!",
+	robots: "noindex, nofollow",
+};
 
 export default function RootLayout({
   children,
@@ -18,7 +24,10 @@ export default function RootLayout({
       <body
         className={`${nunito.variable} ${nunito.className} antialiased`}
       >
-        {children}
+        <>
+          <ToastContainer />
+          {children}
+        </>
       </body>
     </html>
   );

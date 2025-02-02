@@ -23,3 +23,8 @@ body {
 h1 {
   @apply text-2xl font-bold text-text-black;
 }
+
+button:disabled {
+  @apply cursor-not-allowed;
+  @apply bg-gray-300 text-gray-500;
+}
