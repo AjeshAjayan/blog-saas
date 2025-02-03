@@ -12,7 +12,7 @@ const apolloServer = new ApolloServer({
 export const config = {
     api: {
         bodyParser: false
-    }
+    },
 }
 
 const handler = startServerAndCreateNextHandler(apolloServer as any, {
