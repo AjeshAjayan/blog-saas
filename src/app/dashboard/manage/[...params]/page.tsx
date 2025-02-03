@@ -35,8 +35,8 @@ export default async function ManageByBlogId({
         <div className="min-h-screen bg-background">
             <div className="container mx-auto px-4 py-8">
                 <div className=" flex gap-4 justify-between mb-5">
-                    <BButton type="button">Edit</BButton>
                     <BButton className="bg-red-500" type="button">Delete</BButton>
+                    <BButton type="button">Edit</BButton>
                 </div>
                 <h1>{blog.title}</h1>
                 <Preview>{blog.content}</Preview>
