@@ -39,7 +39,6 @@ export async function loginController(email: string, password: string) {
         }
 
     } catch (err) {
-        console.error('Error while calling loginController', err);
         return new Error('Something went wrong');
     }
 }

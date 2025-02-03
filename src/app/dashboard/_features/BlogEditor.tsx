@@ -32,7 +32,6 @@ export default function BlogEditor() {
             const res = await publishBlogPost({ variables: { publishBlogId: blogId } });
             toast(res.data.publishBlog.message, { type: 'success' })
         } catch (error) {
-            console.error("Error publishing blog post:", error)
             toast.error((error as any).message, { type: 'error' })
         }
     }
@@ -52,11 +51,9 @@ export default function BlogEditor() {
              */
             if (title) {
                 saveBlogPost({ variables: { title, contents: value || '', id: blogId } }).then((res) => {
-                    console.log(res)
                     setBlogId(parseInt(res.data.addBlog.id))
                     setShowAutoSaveText(true)
                 }).catch((err) => {
-                    console.error(err);
                     toast.error(err.message, { type: 'error' })
                 })
 

@@ -19,7 +19,7 @@ export const addBlogController = async ({ id, title, contents, ctx }: AddBlogCon
         if(Number(id)) {
             // perform update
             const blog = await updateBlog(Number(id), title, contents);
-            console.log('update', blog, id);
+            // console.log('update', blog, id);
             return {
                 message: "Blog updated successfully",
                 ...blog[0]
