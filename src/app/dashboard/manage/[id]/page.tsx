@@ -1,6 +1,6 @@
 'use client'
 import BlogEditor from "@/app/dashboard/_features/BlogEditor";
-import { useLazyQuery, useQuery } from "@apollo/client";
+import { useLazyQuery } from "@apollo/client";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { GET_SINGLE_BLOG } from "../../_queries/getBlogsByUser.graphql";
@@ -35,7 +35,7 @@ export default function Page() {
                 setLoading(false);
             })
         }
-    }, [])
+    }, [params.id, getBlog])
 
     return (
         <div className="container mx-auto p-4 mt-10">

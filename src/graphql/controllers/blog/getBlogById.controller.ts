@@ -9,7 +9,7 @@ export const getBlogByIdController = (id: number, ctx: GQLContext) => {
 
     try {
         return getBlogById(id);
-    } catch(e) {
+    } catch {
         return new Error("An error occurred while fetching blogs");
     }
 }

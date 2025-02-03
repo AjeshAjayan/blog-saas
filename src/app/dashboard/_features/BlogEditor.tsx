@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useRef } from "react"
 import dynamic from "next/dynamic"
 import { useMutation } from "@apollo/client"
 import { SAVE_BLOG } from "../manage/_mutations/saveBlog.graphql"
@@ -35,20 +35,11 @@ export default function BlogEditor({
     const [showAutoSaveText, setShowAutoSaveText] = useState(false);
     const [title, setTitle] = useState(initialTitle);
     const [blogId, setBlogId] = useState(id);
-    const [publishedStatus, setPublishedStatus] = useState(published);
+    const [publishedStatus] = useState(published);
     const [showPreview, setShowPreview] = useState(false);
 
     const [saveBlogPost] = useMutation(SAVE_BLOG, { client })
     const [publishBlogPost] = useMutation(PUBLISH_BLOG, { client })
-
-    const handlePublish = async () => {
-        try {
-            const res = await publishBlogPost({ variables: { publishBlogId: blogId } });
-            toast(res.data.publishBlog.message, { type: 'success' })
-        } catch (error) {
-            toast.error((error as any).message, { type: 'error' })
-        }
-    }
 
     /**
      * handleOnChange is debounced; auto save is have with debouncing

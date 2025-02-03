@@ -32,7 +32,7 @@ export default async function Dashboard() {
     return (
         <div className="min-h-screen bg-background">
             <div className="container mx-auto px-4 py-8">
-                <div className="flex justify-end mt-5">
+                <div className="flex justify-end mt-5 mb-10 xl:mb-0">
                     <Link href={'/dashboard/manage/0'}>
                         <BButton type="button" className="w-60">Create new blog</BButton>
                     </Link>

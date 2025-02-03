@@ -41,7 +41,7 @@ export default function Login() {
 			}
 		}).then((response) => {
 			toast(response.data.login.message, { type: "success" });
-			router.push("/");
+			router.push("/dashboard");
 		}).catch((error) => {
 			toast.error(error.message, { type: "error" });
 		})

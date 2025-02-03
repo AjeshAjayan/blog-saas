@@ -22,7 +22,7 @@ export const deleteBlogController = async ({ blogId, ctx }: DeleteBlogController
         return {
             message: "Blog deleted successfully",
         }
-    } catch (error) {
+    } catch {
         return new Error("An error occurred while deleting a blog");
     }
 }

@@ -21,7 +21,7 @@ export const updateBlogController = async ({ title, contents, ctx, blogId }: Upd
 
     try {
         if(title) {
-            const blog = await updateBlog(blogId, title, contents);
+            await updateBlog(blogId, title, contents);
         }
         // Add blog content
         const promises: Promise<any>[] = [];
@@ -33,7 +33,7 @@ export const updateBlogController = async ({ title, contents, ctx, blogId }: Upd
         return {
             message: "Blog updated successfully",
         }
-    } catch (error) {
+    } catch {
         return new Error("An error occurred while updating a blog");
     }
 }

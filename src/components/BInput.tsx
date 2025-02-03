@@ -1,4 +1,4 @@
-import { FieldError, FieldValues } from "react-hook-form";
+import { FieldError } from "react-hook-form";
 
 type BInputProps = {
     type: "password" | "email" | "text";

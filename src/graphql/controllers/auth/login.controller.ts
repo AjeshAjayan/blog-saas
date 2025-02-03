@@ -39,7 +39,7 @@ export async function loginController(email: string, password: string) {
             };
         }
 
-    } catch (err) {
+    } catch {
         return new Error('Something went wrong');
     }
 }
