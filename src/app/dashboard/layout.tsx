@@ -5,7 +5,7 @@ export default function Layout({
     children
 }: { children: React.ReactNode }) {
     return (
-        <div>
+        <div className=" max-w-[1640px] m-auto">
             <nav className="
                 flex
                 justify-between
@@ -15,8 +15,11 @@ export default function Layout({
                 text-white
                 cursor-pointer
                 fixed
+                left-0
+                top-0
                 w-full
                 z-10
+                2xl:px-[10rem]
             ">
                 <div className="flex gap-4 items-center">
                     <li>

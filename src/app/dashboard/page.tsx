@@ -32,10 +32,12 @@ export default async function Dashboard() {
     return (
         <div className="min-h-screen bg-background">
             <div className="container mx-auto px-4 py-8">
-                <Link href={'/dashboard/manage/0'}>
-                    <BButton type="button" className=" mb-4">Create new blog</BButton>
-                </Link>
-                <h1 className="text-4xl font-bold mb-8 text-black">Your Blog Posts</h1>
+                <div className="flex justify-end mt-5">
+                    <Link href={'/dashboard/manage/0'}>
+                        <BButton type="button" className="w-60">Create new blog</BButton>
+                    </Link>
+                </div>
+                <h1 className="text-4xl font-bold text-black mb-4">Your Blog Posts</h1>
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {blogs.map((blog) => (
                         <Link href={`/dashboard/view/${blog.slug}/${blog.id}`} key={blog.id} className="block">

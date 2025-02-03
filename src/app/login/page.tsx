@@ -56,11 +56,15 @@ export default function Login() {
 			bg-background 
 			bg-cover 
 			bg-[position:-45px_-180px]
+			md:w-screen
+			md:justify-center
+			md:items-center
 		">
-			<main className="z-10 w-full ">
+			<main className="z-10 w-full flex justify-center">
 				<form
 					className="
-						w-full 
+						w-full
+						md:w-1/2 
 						h-3/4 
 						bg-white 
 						p-6 
@@ -68,6 +72,7 @@ export default function Login() {
 						flex-col 
 						gap-3 
 						rounded
+						max-w-[580px]
 					"
 					onSubmit={handleOnSubmit}
 				>

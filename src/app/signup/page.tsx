@@ -65,9 +65,9 @@ export default function SignUp() {
 			p-8 
 			bg-background 
 			bg-cover 
-			bg-[position:-45px_-180px]
+			w-screen
 		">
-			<main className="z-10 w-full ">
+			<main className="z-10 w-full flex justify-center items-center md:h-full">
 				<form
 					onSubmit={handleOnSubmit} 
 					className="
@@ -79,6 +79,7 @@ export default function SignUp() {
 						flex-col 
 						gap-3 
 						rounded
+						md:max-w-[580px]
 					">
 					<h1>Sign Up</h1>
 					<BInput type="text"
