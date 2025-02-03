@@ -3,8 +3,8 @@
 import { useState, useEffect, useRef } from "react"
 import dynamic from "next/dynamic"
 import { useMutation } from "@apollo/client"
-import { SAVE_BLOG } from "../_mutations/saveBlog.graphql"
-import { PUBLISH_BLOG } from "../_mutations/publishBlog.graphql"
+import { SAVE_BLOG } from "../manage/_mutations/saveBlog.graphql"
+import { PUBLISH_BLOG } from "../manage/_mutations/publishBlog.graphql"
 import createApolloClient from "@/lib/apolloClient"
 import { BButton } from "@/components/BButton"
 import rehypeSanitize from "rehype-sanitize";
