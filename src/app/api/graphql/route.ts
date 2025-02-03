@@ -33,9 +33,9 @@ export async function OPTIONS(req: Request) {
     return new Response(null, {
         status: 200,
         headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
-            "Access-Control-Allow-Headers": "Content-Type, Authorization"
+            "Access-Control-Allow-Origin": "https://blog-saas-git-develop-ajesh-ajayans-projects.vercel.app",
+            "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type, Authorization",
         }
     });
 }
