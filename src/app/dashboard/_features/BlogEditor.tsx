@@ -12,16 +12,30 @@ import { BInput } from "@/components/BInput"
 import { BSuccessText } from "@/components/BSuccessText"
 import { toast } from "react-toastify"
 import { Preview } from "./Preview"
+import { UnpublishOrPublish } from "../view/[...params]/_features/UnPublishOrPublish"
 
 const MDEditor = dynamic(() => import("@uiw/react-md-editor").then((mod) => mod.default), { ssr: false })
 
 const client = createApolloClient();
 
-export default function BlogEditor() {
-    const [content, setContent] = useState("");
+type BlogEditorProps = {
+    title: string
+    content: string
+    id: number
+    published: boolean
+}
+
+export default function BlogEditor({
+    title: initialTitle,
+    content: initialContent,
+    id,
+    published,
+}: BlogEditorProps) {
+    const [content, setContent] = useState(initialContent);
     const [showAutoSaveText, setShowAutoSaveText] = useState(false);
-    const [title, setTitle] = useState('');
-    const [blogId, setBlogId] = useState(0);
+    const [title, setTitle] = useState(initialTitle);
+    const [blogId, setBlogId] = useState(id);
+    const [publishedStatus, setPublishedStatus] = useState(published);
     const [showPreview, setShowPreview] = useState(false);
 
     const [saveBlogPost] = useMutation(SAVE_BLOG, { client })
@@ -67,7 +81,11 @@ export default function BlogEditor() {
     }
 
     const handleTitleOnChange = (e: any) => {
-        setTitle(e.target.value)
+        setTitle(e.target.value);
+        /**
+         * handleOnChange is debounced
+         */
+        handleOnChange(content)
     }
 
     const handlePreview = () => void setShowPreview(p => !p);
@@ -75,15 +93,12 @@ export default function BlogEditor() {
     return (
         <div className="flex flex-col gap-4">
             <div className=" flex gap-4 items-center w-full justify-between">
-                <div className="flex gap-4 items-center">
-                    <BButton
-                        onClick={handlePublish}
-                        type="button"
-                        className="hidden max-w-40 md:block bg-green-500"
-                        disabled={blogId === 0}
-                    >
-                        Publish
-                    </BButton>
+                <div className="flex gap-4 items-center w-60">
+                    <UnpublishOrPublish 
+                        hasPublished={publishedStatus} 
+                        slug={''} 
+                        id={blogId}
+                    />
                     <BSuccessText className={`${showAutoSaveText ? ' opacity-100' : 'opacity-0'}`}>Auto save...</BSuccessText>
                 </div>
                 <BButton 

@@ -15,7 +15,7 @@ export const BSuccessText = ({ children, className }: BSuccessTextProps) => {
                 duration-500
                 flex 
                 gap-1 
-                items-center 
+                items-center
                 ${className}
             `
         }

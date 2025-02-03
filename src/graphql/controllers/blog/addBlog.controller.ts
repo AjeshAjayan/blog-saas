@@ -11,11 +11,11 @@ type AddBlogControllerType = {
 
 export const addBlogController = async ({ id, title, contents, ctx }: AddBlogControllerType) => {
     if(!ctx.auth) {
-        return new ApolloError("You are not authorized to perform this action", "401");
+        return new ApolloError("unauthorized", "401");
     }
 
     try {
-        const slug = title.split(' ').join('-').toLocaleLowerCase();
+        const slug = title.split(' ').join('-').toLocaleLowerCase().replace(/[^\w\s]/g, '');
         if(Number(id)) {
             // perform update
             const blog = await updateBlog(Number(id), title, contents);

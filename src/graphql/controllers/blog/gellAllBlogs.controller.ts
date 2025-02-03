@@ -1,5 +1,6 @@
 import { GQLContext } from "@/graphql/resolvers/auth.resolver";
 import { getAllBlogs } from "@/graphql/services/blog.service";
+import { ApolloError } from "apollo-server-errors";
 
 type GetAllBlogControllerType = {
     ctx: GQLContext,
@@ -7,7 +8,7 @@ type GetAllBlogControllerType = {
 
 export const getAllBlogController = async ({ ctx }: GetAllBlogControllerType) => {
     if (!ctx?.auth) {
-        return new Error("You are not authorized to perform this action");
+        return new ApolloError("unauthorized", "401");
     }
 
     try {

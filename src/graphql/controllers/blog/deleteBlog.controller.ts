@@ -1,5 +1,6 @@
 import { GQLContext } from "@/graphql/resolvers/auth.resolver";
 import { deleteBlog } from "@/graphql/services/blog.service";
+import { ApolloError } from "apollo-server-errors";
 
 type DeleteBlogControllerType = {
     ctx: GQLContext,
@@ -8,7 +9,7 @@ type DeleteBlogControllerType = {
 
 export const deleteBlogController = async ({ blogId, ctx }: DeleteBlogControllerType) => {
     if (!ctx.auth) {
-        return new Error("You are not authorized to perform this action");
+        return new ApolloError("unauthorized", "401");
     }
 
     if(!blogId) {

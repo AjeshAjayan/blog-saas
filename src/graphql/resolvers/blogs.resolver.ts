@@ -4,6 +4,7 @@ import { getAllBlogController } from "../controllers/blog/gellAllBlogs.controlle
 import { getAllByUserBlogController } from "../controllers/blog/gellAllBlogsByUser.controller";
 import { getBlogByIdController } from "../controllers/blog/getBlogById.controller";
 import { publishBlogController } from "../controllers/blog/publishBlog.controller";
+import { unpublishBlogController } from "../controllers/blog/unpublishBlog.controller";
 import { updateBlogController } from "../controllers/blog/updateBlog.controller";
 
 export const blogResolvers = {
@@ -32,7 +33,7 @@ export const blogResolvers = {
             return publishBlogController(id, context);
         },
         unpublishBlog: (_: any, { id }: any, context: any) => {
-            return publishBlogController(id, context);
+            return unpublishBlogController(id, context);
         },
     }
 }

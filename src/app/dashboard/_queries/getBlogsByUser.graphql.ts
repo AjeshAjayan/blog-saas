@@ -18,6 +18,7 @@ export const GET_SINGLE_BLOG = gql`
         blogById(id: $blogByIdId) {
             content
             title
+            id
             published
         }
     }

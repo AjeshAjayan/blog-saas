@@ -1,6 +1,7 @@
 import { GQLContext } from "@/graphql/resolvers/auth.resolver";
 import { updateBlog } from "@/graphql/services/blog.service";
 import { updateBlogContent } from "@/graphql/services/blogContent.service";
+import { ApolloError } from "apollo-server-errors";
 
 type UpdateBlogControllerType = {
     title: string;
@@ -11,7 +12,7 @@ type UpdateBlogControllerType = {
 
 export const updateBlogController = async ({ title, contents, ctx, blogId }: UpdateBlogControllerType) => {
     if (!ctx.auth) {
-        return new Error("You are not authorized to perform this action");
+        return new ApolloError("unauthorized", "401");
     }
 
     if(!blogId || !title || contents.length === 0) {

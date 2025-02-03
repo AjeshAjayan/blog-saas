@@ -4,7 +4,7 @@ import { ApolloError } from "apollo-server-errors";
 
 export const getBlogByIdController = (id: number, ctx: GQLContext) => {
     if (!ctx?.auth) {
-        return new ApolloError("You are not authorized to perform this action", "401");
+        return new ApolloError("unauthorized", "401");
     }
 
     try {
