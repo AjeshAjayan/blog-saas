@@ -8,6 +8,7 @@ export const GET_BLOGS_BY_USER = gql`
             slug
             id
             createdAt
+            published
         }
     }
 `
@@ -17,6 +18,7 @@ export const GET_SINGLE_BLOG = gql`
         blogById(id: $blogByIdId) {
             content
             title
+            published
         }
     }
 `

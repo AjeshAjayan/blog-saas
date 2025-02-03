@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
     return (
-        <div className="container mx-auto p-4">
+        <div className="container mx-auto p-4 mt-10">
             <h1 className="text-2xl font-bold mb-4">Create/Edit Blog</h1>
             <BlogEditor />
         </div>

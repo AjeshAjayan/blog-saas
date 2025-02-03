@@ -17,7 +17,7 @@ export const updateBlog = async (id: number, title: string, content: string) => 
 };
 
 export const getBlogsByUserId = async (userId: number): Promise<SelectBlog[]> => {
-    return await db.select().from(blogTable).where(eq(blogTable.userId, userId));
+    return await db.select().from(blogTable).where(and(eq(blogTable.userId, userId)));
 };
 
 export const getBlogsBySlug = async (slug: string): Promise<SelectBlog[]> => {
@@ -54,4 +54,8 @@ export const deleteBlog = async (id: number) => {
 
 export const publishBlog = async (id: number) => {
     await db.update(blogTable).set({ published: true }).where(eq(blogTable.id, id));
+}
+
+export const unpublishBlog = async (id: number) => {
+    await db.update(blogTable).set({ published: false }).where(eq(blogTable.id, id));
 }

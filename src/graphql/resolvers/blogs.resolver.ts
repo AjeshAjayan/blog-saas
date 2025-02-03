@@ -30,6 +30,9 @@ export const blogResolvers = {
         },
         publishBlog: (_: any, { id }: any, context: any) => {
             return publishBlogController(id, context);
-        }, 
+        },
+        unpublishBlog: (_: any, { id }: any, context: any) => {
+            return publishBlogController(id, context);
+        },
     }
 }

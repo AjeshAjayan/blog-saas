@@ -9,6 +9,8 @@ export const blogsTypeDefs = gql`
         content: String!
         createdAt: String!
         updatedAt: String!
+        isDeleted: Boolean!
+        published: Boolean!
     }
 
     type PublishBlogResponse {
@@ -27,5 +29,6 @@ export const blogsTypeDefs = gql`
         updateBlog(id: ID!, title: String, content: String): Blog
         deleteBlog(id: ID!): Blog
         publishBlog(id: ID!): PublishBlogResponse
+        unpublishBlog(id: ID!): PublishBlogResponse
     }
 `

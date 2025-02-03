@@ -79,7 +79,7 @@ export default function BlogEditor() {
                     <BButton
                         onClick={handlePublish}
                         type="button"
-                        className="hidden max-w-40 md:block"
+                        className="hidden max-w-40 md:block bg-green-500"
                         disabled={blogId === 0}
                     >
                         Publish

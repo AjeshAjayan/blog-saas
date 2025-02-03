@@ -45,7 +45,7 @@ export default async function Dashboard() {
                                 <div className="p-6">
                                     <h2 className="text-xl font-semibold mb-2 text-black">{blog.title}</h2>
                                     <div className="flex justify-between items-center">
-                                        <span className="text-sm text-secondary">{blog.date}</span>
+                                        <span className="text-sm text-secondary">{blog.published ? 'Published   ' : 'Draft'}</span>
                                         <span className="text-sm font-medium text-black">Read more...</span>
                                     </div>
                                 </div>
