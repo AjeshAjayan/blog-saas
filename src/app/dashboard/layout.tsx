@@ -14,6 +14,9 @@ export default function Layout({
                 p-4
                 text-white
                 cursor-pointer
+                fixed
+                w-full
+                z-10
             ">
                 <div className="flex gap-4 items-center">
                     <li>
@@ -27,7 +30,7 @@ export default function Layout({
                     <Link href="/login">Login</Link>
                 </li>
             </nav>
-            <main>
+            <main className="pt-8">
                 {children}
             </main>
         </div>

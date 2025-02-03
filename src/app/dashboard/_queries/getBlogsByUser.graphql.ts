@@ -11,3 +11,12 @@ export const GET_BLOGS_BY_USER = gql`
         }
     }
 `
+
+export const GET_SINGLE_BLOG = gql`
+    query BlogById($blogByIdId: ID!) {
+        blogById(id: $blogByIdId) {
+            content
+            title
+        }
+    }
+`

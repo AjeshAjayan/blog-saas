@@ -24,6 +24,9 @@ export const getBlogsBySlug = async (slug: string): Promise<SelectBlog[]> => {
     return await db.select().from(blogTable).where(eq(blogTable.slug, slug));
 };
 
+export const getBlogById = async (id: number): Promise<SelectBlog | undefined> => {
+    return await db.select().from(blogTable).where(eq(blogTable.id, id)).limit(1).then(rows => rows[0]);
+};
 
 export const getBlogsBySlugAndUserId = async (slug: string, userId: number): Promise<SelectBlog[]> => {
     return await db.select().from(blogTable).where(and(eq(blogTable.slug, slug), eq(blogTable.userId, userId)));

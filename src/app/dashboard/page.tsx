@@ -40,7 +40,7 @@ export default async function Dashboard() {
                 <h1 className="text-4xl font-bold mb-8 text-black">Your Blog Posts</h1>
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {blogs.map((blog) => (
-                        <Link href={`/blog/${blog.slug}/${blog.id}`} key={blog.id} className="block">
+                        <Link href={`/dashboard/manage/${blog.slug}/${blog.id}`} key={blog.id} className="block">
                             <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
                                 <div className="p-6">
                                     <h2 className="text-xl font-semibold mb-2 text-black">{blog.title}</h2>

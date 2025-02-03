@@ -2,6 +2,7 @@ import { addBlogController } from "../controllers/blog/addBlog.controller";
 import { deleteBlogController } from "../controllers/blog/deleteBlog.controller";
 import { getAllBlogController } from "../controllers/blog/gellAllBlogs.controller";
 import { getAllByUserBlogController } from "../controllers/blog/gellAllBlogsByUser.controller";
+import { getBlogByIdController } from "../controllers/blog/getBlogById.controller";
 import { publishBlogController } from "../controllers/blog/publishBlog.controller";
 import { updateBlogController } from "../controllers/blog/updateBlog.controller";
 
@@ -13,6 +14,9 @@ export const blogResolvers = {
         blogBuUser: (_: any, __: any, context: any) => {
             return getAllByUserBlogController({ ctx: context });
         },
+        blogById: (_: any, { id }: any, context: any) => {
+            return getBlogByIdController(id, context);
+        }
     },
     Mutation: {
         addBlog: (_: any, { id, title, contents }: any, context: any) => {
