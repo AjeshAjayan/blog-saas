@@ -1,27 +1,39 @@
 import { GQLContext } from "@/graphql/resolvers/auth.resolver";
-import { addBlog } from "@/graphql/services/blog.service";
+import { addBlog, getBlogsBySlugAndUserId, updateBlog } from "@/graphql/services/blog.service";
 import { ApolloError } from "apollo-server-errors";
 
 type AddBlogControllerType = {
     title: string;
     contents: string;
+    id?: number;
     ctx: GQLContext
 }
 
-export const addBlogController = async ({ title, contents, ctx }: AddBlogControllerType) => {
+export const addBlogController = async ({ id, title, contents, ctx }: AddBlogControllerType) => {
     if(!ctx.auth) {
         return new ApolloError("You are not authorized to perform this action", "401");
     }
 
     try {
+        const slug = title.split(' ').join('-').toLocaleLowerCase();
+        if(Number(id)) {
+            // perform update
+            const blog = await updateBlog(Number(id), title, contents);
+            console.log('update', blog, id);
+            return {
+                message: "Blog updated successfully",
+                ...blog[0]
+            }
+        }
+
         // Add blog
+
         const blog = await addBlog({ 
-            title, 
+            title,
             userId: ctx.user.user.id, 
-            slug: title.split(' ').join('-').toLocaleLowerCase(),
+            slug,
             content: contents
         });
-        console.log(blog)
 
         /**
          * Keeping below code comment: there code will be required on future to make the blog content scalable 

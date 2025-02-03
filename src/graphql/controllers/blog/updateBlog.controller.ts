@@ -4,7 +4,7 @@ import { updateBlogContent } from "@/graphql/services/blogContent.service";
 
 type UpdateBlogControllerType = {
     title: string;
-    contents: string[];
+    contents: string;
     ctx: GQLContext,
     blogId: number
 }
@@ -20,7 +20,7 @@ export const updateBlogController = async ({ title, contents, ctx, blogId }: Upd
 
     try {
         if(title) {
-            const blog = await updateBlog(blogId, title);
+            const blog = await updateBlog(blogId, title, contents);
         }
         // Add blog content
         const promises: Promise<any>[] = [];

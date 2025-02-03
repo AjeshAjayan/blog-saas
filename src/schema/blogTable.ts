@@ -3,8 +3,8 @@ import { usersTable } from './usersTable';
 
 export const blogTable = pgTable('blogs', {
     id: serial('id').primaryKey(),
-    title: text('title').notNull().unique(),
-    slug: text('slug').notNull().unique(),
+    title: text('title').notNull(),
+    slug: text('slug').notNull(),
     content: text('content').notNull(),
     userId: integer('user_id')
         .notNull()

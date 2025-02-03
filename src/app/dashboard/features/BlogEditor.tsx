@@ -20,17 +20,19 @@ export default function BlogEditor() {
     const [content, setContent] = useState("");
     const [showAutoSaveText, setShowAutoSaveText] = useState(false);
     const [title, setTitle] = useState('');
+    const [blogId, setBlogId] = useState(0);
+
 
     const [saveBlogPost] = useMutation(SAVE_BLOG, { client })
     const [publishBlogPost] = useMutation(PUBLISH_BLOG, { client })
 
     const handlePublish = async () => {
         try {
-            await publishBlogPost({ variables: { content } })
-            alert("Blog post published successfully!")
+            const res = await publishBlogPost({ variables: { publishBlogId: blogId } });
+            toast(res.data.publishBlog.message, { type: 'success' })
         } catch (error) {
             console.error("Error publishing blog post:", error)
-            alert("Failed to publish blog post. Please try again.")
+            toast.error((error as any).message, { type: 'error' })
         }
     }
 
@@ -48,9 +50,17 @@ export default function BlogEditor() {
              * auto-save need title to work
              */
             if (title) {
-                setShowAutoSaveText(true)
+                saveBlogPost({ variables: { title, contents: value || '', id: blogId } }).then((res) => {
+                    console.log(res)
+                    setBlogId(parseInt(res.data.addBlog.id))
+                    setShowAutoSaveText(true)
+                }).catch((err) => {
+                    console.error(err);
+                    toast.error(err.message, { type: 'error' })
+                })
+
                 setTimeout(() => {
-                    setShowAutoSaveText(false)
+                    setShowAutoSaveText(false);
                 }, 2000)
             } else {
                 toast('Please provide a title for auto-save to work', { type: 'info' })
@@ -69,6 +79,7 @@ export default function BlogEditor() {
                     onClick={handlePublish}
                     type="button"
                     className="hidden max-w-40 md:block"
+                    disabled={blogId === 0}
                 >
                     Publish
                 </BButton>

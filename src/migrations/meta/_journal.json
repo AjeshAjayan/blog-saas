@@ -15,6 +15,13 @@
       "when": 1738575389079,
       "tag": "0001_adorable_stardust",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1738582629937,
+      "tag": "0002_silky_wallflower",
+      "breakpoints": true
     }
   ]
 }

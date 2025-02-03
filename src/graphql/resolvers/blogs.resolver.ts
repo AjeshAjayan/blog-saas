@@ -15,8 +15,8 @@ export const blogResolvers = {
         },
     },
     Mutation: {
-        addBlog: (_: any, { title, contents }: any, context: any) => {
-            return addBlogController({ title, contents, ctx: context });
+        addBlog: (_: any, { id, title, contents }: any, context: any) => {
+            return addBlogController({ id, title, contents, ctx: context });
         },
         updateBlog: (_: any, { id, title, contents }: any, context: any) => {
             return updateBlogController({ blogId: id, title, contents, ctx: context });
