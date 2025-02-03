@@ -5,6 +5,7 @@ export const GET_BLOGS_BY_USER = gql`
         blogBuUser {
             content
             title
+            slug
             id
             createdAt
         }

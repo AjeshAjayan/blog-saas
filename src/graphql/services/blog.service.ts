@@ -29,6 +29,18 @@ export const getBlogsBySlugAndUserId = async (slug: string, userId: number): Pro
     return await db.select().from(blogTable).where(and(eq(blogTable.slug, slug), eq(blogTable.userId, userId)));
 };
 
+export const getPublishedBlogsBySlugAndUserId = async (slug: string, userId: number): Promise<SelectBlog[]> => {
+    return await db.select()
+        .from(blogTable)
+        .where(
+            and(
+                eq(blogTable.slug, slug), 
+                eq(blogTable.userId, userId), 
+                eq(blogTable.published, true)
+            )
+        );
+};
+
 export const getAllBlogs = async (): Promise<SelectBlog[]> => {
     return await db.select().from(blogTable);
 };

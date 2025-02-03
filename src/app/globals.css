@@ -28,3 +28,8 @@ button:disabled {
   @apply cursor-not-allowed;
   @apply bg-gray-300 text-gray-500;
 }
+
+li {
+  list-style: none;
+;
+}

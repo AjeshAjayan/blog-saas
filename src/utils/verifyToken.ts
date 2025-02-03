@@ -24,7 +24,6 @@ export const verifyToken = async (): Promise<VerifyTokenReturnType> => {
             user: decoded,
         };
     } catch (err) {
-        console.log('token 2', err);
         return {
             auth: false,
             user: null,

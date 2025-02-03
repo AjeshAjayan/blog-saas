@@ -6,7 +6,7 @@ type GetAllByUserBlogControllerType = {
 }
 
 export const getAllByUserBlogController = async ({ ctx }: GetAllByUserBlogControllerType) => {
-    // console.log('ctx', ctx); 
+    console.log('ctx', ctx); 
     if (!ctx?.auth) {
         return new Error("You are not authorized to perform this action");
     }

@@ -5,6 +5,7 @@ export const blogsTypeDefs = gql`
         id: ID!
         title: String!
         userId: ID
+        slug: String!
         content: String!
         createdAt: String!
         updatedAt: String!

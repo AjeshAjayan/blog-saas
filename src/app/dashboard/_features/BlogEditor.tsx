@@ -105,6 +105,7 @@ export default function BlogEditor() {
                         placeholder="Provide an attractive title"
                         value={title}
                         onChange={handleTitleOnChange}
+                        className="hidden md:flex"
                     />
                     <div className="hidden md:flex flex-col">
                         <div className="w-full">
