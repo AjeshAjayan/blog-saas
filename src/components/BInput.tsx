@@ -6,7 +6,9 @@ type BInputProps = {
     name?: string;
     placeholder?: string;
     label: string;
-    errors: FieldError | undefined
+    errors?: FieldError | undefined
+    onChange: (e: any) => void
+    value?: string | undefined
 }
 
 export const BInput = ({

@@ -6,7 +6,7 @@ import createApolloClient from "@/lib/apolloClient";
 import { useMutation } from "@apollo/client";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import { ADD_USER_GRAPHQL } from "./queries/addUser.graphql";
+import { ADD_USER_GRAPHQL } from "./mutations/addUser.graphql";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 
@@ -59,25 +59,25 @@ export default function SignUp() {
 
 	return (
 		<div className="
-			xs:h-full 
-			xs:flex 
-			xs:items-end 
-			xs:p-8 
-			xs:bg-background 
-			xs:bg-cover 
-			xs:bg-[position:-45px_-180px]
+			h-full 
+			flex 
+			items-end 
+			p-8 
+			bg-background 
+			bg-cover 
+			bg-[position:-45px_-180px]
 		">
-			<main className="xs:z-10 xs:w-full ">
+			<main className="z-10 w-full ">
 				<form
 					onSubmit={handleOnSubmit} 
 					className="
-						xs:w-full 
-						xs:h-3/4 
-						xs:bg-white 
-						xs:p-6 
-						xs:flex 
-						xs:flex-col 
-						xs:gap-3 
+						w-full 
+						h-3/4 
+						bg-white 
+						p-6 
+						flex 
+						flex-col 
+						gap-3 
 						rounded
 					">
 					<h1>Sign Up</h1>

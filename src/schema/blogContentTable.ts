@@ -1,7 +1,7 @@
 import { integer, pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
 import { blogTable } from './blogTable';
 
-export const blogContentTable = pgTable('blogs_table', {
+export const blogContentTable = pgTable('blogs_contents', {
     id: serial('id').primaryKey(),
     blogId: integer('blog_id')
         .notNull()
