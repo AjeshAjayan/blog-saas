@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import BlogEditor from "../features/BlogEditor";
+import BlogEditor from "../_features/BlogEditor";
 
 export const metadata: Metadata = {
     title: 'Create post'
