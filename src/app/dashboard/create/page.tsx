@@ -1,4 +1,9 @@
+import { Metadata } from "next";
 import BlogEditor from "../features/BlogEditor";
+
+export const metadata: Metadata = {
+    title: 'Create post'
+}
 
 export default function Page() {
     return (

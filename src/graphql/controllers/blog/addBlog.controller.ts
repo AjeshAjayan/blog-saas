@@ -21,6 +21,11 @@ export const addBlogController = async ({ title, contents, ctx }: AddBlogControl
             slug: title.split(' ').join('-').toLocaleLowerCase(),
             content: contents
         });
+        console.log(blog)
+
+        /**
+         * Keeping below code comment: there code will be required on future to make the blog content scalable 
+         */
         // Add blog content
         // const promises: Promise<any>[] = [];
         // for (let i = 0; i < contents.length; i++) {
@@ -30,8 +35,12 @@ export const addBlogController = async ({ title, contents, ctx }: AddBlogControl
         
         return {
             message: "Blog added successfully",
+            ...blog
         }
     } catch (error) {
+        if(((error as any).constraint ?? '') === 'blogs_title_unique') {
+            return new Error("Another post exist with same title");
+        }
         return new Error("An error occurred while adding a blog");
     }
 }
