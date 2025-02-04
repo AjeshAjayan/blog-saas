@@ -28,7 +28,7 @@ yarn && yarn dev
 - "rehype-sanitize" to sanitize md-editor to prevent XSS attacks
 
 ## Additional Feature
-- Responsive for all screen സൈസ് including 4k screens
+- Responsive for all screen size including 4k screens
 - Auto-saving for blog
 - Draft version for blogs
 - Count down on delete, for safe permanent delete
