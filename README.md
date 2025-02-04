@@ -46,6 +46,7 @@ yarn && yarn dev
 - ***No Pagination** (requirement not met)
 - ***Logout is just a mock link/button that redirect user to login page. Cookie won't be cleared** (requirement not met)
 - Sitemap and robot.txt not configured
+- Not handle JWT refresh token
 
 ## Screenshots
 
