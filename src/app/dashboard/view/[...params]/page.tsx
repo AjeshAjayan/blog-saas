@@ -8,6 +8,7 @@ import { BButton } from "@/components/BButton";
 import { UnpublishOrPublish } from "./_features/UnPublishOrPublish";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import BConfirmDialog from "@/components/BConfirmDailog";
 
 const client = createApolloClient();
 
@@ -41,8 +42,8 @@ export default async function ManageByBlogId({
     return (
         <div className="min-h-screen bg-background">
             <div className="container mx-auto px-4 py-8">
-                <div className=" flex gap-4 justify-between mb-5">
-                    <BButton className="!bg-red-500" type="button">Delete</BButton>
+                <div className=" flex gap-4 justify-between mb-5"> 
+                    <BConfirmDialog itemName={'Are you sure..?'} id={blog.id} />
                     <Link className="w-full" href={`/dashboard/manage/${blog.id}`}>
                         <BButton type="button">Edit</BButton>
                     </Link>

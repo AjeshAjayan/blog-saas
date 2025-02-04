@@ -53,6 +53,14 @@ export default async function Dashboard() {
                         </Link>
                     ))}
                 </div>
+                {
+                    blogs.length === 0 && (
+                        <div className="flex items-center justify-center w-full h-60">
+                            <p className="text-secondary">None found... go ahead and create one!</p>
+                        </div>
+
+                    )
+                }
             </div>
         </div>
     )

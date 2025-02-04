@@ -27,7 +27,7 @@ export const blogsTypeDefs = gql`
     type Mutation {
         addBlog(id: ID, title: String!, contents: String!): Blog
         updateBlog(id: ID!, title: String, content: String): Blog
-        deleteBlog(id: ID!): Blog
+        deleteBlog(id: ID!): PublishBlogResponse
         publishBlog(id: ID!): PublishBlogResponse
         unpublishBlog(id: ID!): PublishBlogResponse
     }

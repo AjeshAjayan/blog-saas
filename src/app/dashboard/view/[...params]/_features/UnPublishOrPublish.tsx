@@ -13,9 +13,10 @@ type UnpublishOrPublishProps = {
     id: number, 
     hasPublished: boolean, 
     slug: string,
+    save?: () => void;
 };
 
-export const UnpublishOrPublish = ({ id, hasPublished } : UnpublishOrPublishProps) => {
+export const UnpublishOrPublish = ({ id, hasPublished, save } : UnpublishOrPublishProps) => {
     const [published, setPublished] = useState(hasPublished);
     
     const [ unpublish, { loading: unpublishLoading } ] = useMutation(UNPUBLISH_BLOG, { 
@@ -29,6 +30,7 @@ export const UnpublishOrPublish = ({ id, hasPublished } : UnpublishOrPublishProp
     })
 
     const handleUnPublishOrPublish = () => {
+        save && save();
         if(published) {
             unpublish().then((res) => {
                 setPublished(false);

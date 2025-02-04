@@ -14,7 +14,11 @@ export default function Page() {
 
     const [loading, setLoading] = useState(false);
 
-    const [getBlog] = useLazyQuery(GET_SINGLE_BLOG, { client, variables: { blogByIdId: Number(params.id) } })
+    const [getBlog] = useLazyQuery(GET_SINGLE_BLOG, { 
+        client, 
+        variables: { blogByIdId: Number(params.id) }, 
+        fetchPolicy: 'no-cache'
+    })
 
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');

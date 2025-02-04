@@ -29,9 +29,14 @@ export default function Layout({
                         <Link href="/dashboard">Dashboard</Link>
                     </li>
                 </div>
-                <li>
-                    <Link href="/login">Login</Link>
-                </li>
+                <div className="flex gap-4 items-center">
+                    <li>
+                        <Link href="/login">Login</Link>
+                    </li>
+                    <li>
+                        <Link href="/login">Logout</Link>
+                    </li>
+                </div>
             </nav>
             <main className="pt-8">
                 {children}
