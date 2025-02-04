@@ -46,8 +46,8 @@ yarn && yarn dev
 - Could have been store blog content as blocks to handle large blogs
 - No general home page to view all published blogs irrespective of logged in user.
 - Not implemented PostgresSQL transactions to perform rollbacks on API failure.
-- ***No Pagination*** (requirement not met)
-- ***Logout is just a mock link/button that redirect user to login page. Cookie won't be cleared*** (requirement not met)
+- No Pagination ***(requirement not met)***
+- Logout is just a mock link/button that redirect user to login page. Cookie won't be cleared ***(requirement not met)***
 - Sitemap and robot.txt not configured
 - Not handle JWT refresh token
 - Not all components are reusable. However, input, button, and some other components are made reusable.
