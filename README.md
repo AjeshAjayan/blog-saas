@@ -25,13 +25,13 @@ yarn && yarn dev
 - Vercel for deployment
 - "react-md-editor" for markdown editor
 - "react-markdown" for previewing markdown
-- "rehype-sanitize" to md-editor sanitize prevent XSS attacks
+- "rehype-sanitize" to sanitize md-editor to prevent XSS attacks
 
 ## Additional Feature
-- Responsive for all screen sized including 4k screens
+- Responsive for all screen സൈസ് including 4k screens
 - Auto-saving for blog
-- Draft version
-- Count down on delete, for save permanent delete
+- Draft version for blogs
+- Count down on delete, for safe permanent delete
 - Preview feature: to preview the blog while editing/creating blogs.
 
 ## Stretch goals met
