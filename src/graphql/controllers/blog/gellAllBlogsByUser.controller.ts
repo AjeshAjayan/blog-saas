@@ -7,7 +7,6 @@ type GetAllByUserBlogControllerType = {
 }
 
 export const getAllByUserBlogController = async ({ ctx }: GetAllByUserBlogControllerType) => {
-    console.log('ctx', ctx); 
     if (!ctx?.auth) {
         return new ApolloError("unauthorized", "401");
     }

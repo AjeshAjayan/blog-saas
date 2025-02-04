@@ -84,13 +84,16 @@ export default function BlogEditor({
     return (
         <div className="flex flex-col gap-4">
             <div className=" flex gap-4 items-center w-full justify-between">
-                <div className="flex gap-4 items-center w-60">
+                <div className="flex gap-4 items-center w-[20rem]">
                     <UnpublishOrPublish 
                         hasPublished={publishedStatus} 
                         slug={''} 
                         id={blogId}
+                        save={() => {
+                            handleOnChange(content)
+                        }}
                     />
-                    <BSuccessText className={`${showAutoSaveText ? ' opacity-100' : 'opacity-0'}`}>Auto save...</BSuccessText>
+                    <BSuccessText className={`w-60 ${showAutoSaveText ? ' opacity-100' : 'opacity-0'}`}>Auto save...</BSuccessText>
                 </div>
                 <BButton 
                     onClick={handlePreview}
