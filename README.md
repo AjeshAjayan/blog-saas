@@ -1,6 +1,9 @@
 ## Getting Started
-'main' branch is the updated branch
+'main' branch is the updated branch.
+- Click on the live dome URL.
+- Starting by signing up
 
+## Installation
 ```bash
 npm run dev
 # or
