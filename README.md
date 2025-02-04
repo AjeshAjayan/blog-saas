@@ -50,6 +50,7 @@ yarn && yarn dev
 - ***Logout is just a mock link/button that redirect user to login page. Cookie won't be cleared** (requirement not met)
 - Sitemap and robot.txt not configured
 - Not handle JWT refresh token
+- Not all components are reusable. However, input, button, and some other components are made reusable. 
 
 ## Screenshots
 
